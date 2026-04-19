@@ -10,7 +10,7 @@
 
 **A Zepto-inspired grocery delivery web app — built from scratch with the full MERN stack.**
 
-[Live Demo](#) · [Report Bug](https://github.com/mohan-prasanth-21/CartNova/issues) · [GitHub](https://github.com/mohan-prasanth-21/CartNova)
+[Live Demo](#) · [Report Bug](https://github.com/mohan-prasanth-21/CartNova-Full-Stack-Zepto-Inspired-Grocery-Delivery-App-MERN-.git/issues) · [GitHub](https://github.com/mohan-prasanth-21/CartNova-Full-Stack-Zepto-Inspired-Grocery-Delivery-App-MERN-.git)
 
 </div>
 
@@ -18,7 +18,33 @@
 
 ## 📸 Screenshots
 
-> _(Add your screenshots here)_
+### 🏠 Home Page
+
+![Home](screenshots/home.png)
+
+### 🔐 Login Page
+
+![Login](screenshots/login.png)
+
+### 🛍️ Products Page
+
+![Products](screenshots/products.png)
+
+### 🛒 Cart Page
+
+![Cart](screenshots/mycart.png)
+
+### 💳 Checkout Page
+
+![Checkout](screenshots/checkout.png)
+
+### 📦 Orders Page
+
+![Orders](screenshots/order.png)
+
+### 📊 Admin Analytics
+
+![Analytics](screenshots/analyticdashboard.png)
 
 ---
 
@@ -73,7 +99,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/mohan-prasanth-21/CartNova.git
+git clone https://github.com/mohan-prasanth-21/CartNova-Full-Stack-Zepto-Inspired-Grocery-Delivery-App-MERN-.git
 cd CartNova
 ```
 
@@ -243,7 +269,7 @@ CartNova/
 **Mohan Prasanth**
 
 - GitHub: [@mohan-prasanth-21](https://github.com/mohan-prasanth-21)
-- Repository: [CartNova](https://github.com/mohan-prasanth-21/CartNova)
+- Repository: [CartNova](https://github.com/mohan-prasanth-21/CartNova-Full-Stack-Zepto-Inspired-Grocery-Delivery-App-MERN-.git)
 
 ---
 
