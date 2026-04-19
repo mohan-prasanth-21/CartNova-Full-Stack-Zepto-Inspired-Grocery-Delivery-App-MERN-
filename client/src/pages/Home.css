@@ -1,0 +1,243 @@
+.home {
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+.home-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Banner */
+.banner-section {
+  margin-bottom: 16px;
+}
+.banner {
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 170px;
+  transition: background 0.6s;
+}
+.banner-text h2 {
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 8px;
+}
+.banner-text p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 18px;
+  max-width: 420px;
+  line-height: 1.5;
+}
+.banner-cta {
+  background: white;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    transform 0.15s;
+}
+.banner-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.banner-deco {
+  font-size: 80px;
+  opacity: 0.25;
+}
+.banner-nav {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 12px;
+}
+.bdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.bdot.on {
+  width: 24px;
+  background: var(--primary);
+}
+
+/* Strip */
+.strip {
+  background: var(--primary-light);
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  gap: 28px;
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 32px;
+}
+.sec-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+.sec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.sec-count {
+  font-size: 13px;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+/* Categories */
+.cat-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin: 14px 0;
+  scrollbar-width: none;
+}
+.cat-scroll::-webkit-scrollbar {
+  display: none;
+}
+.cat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 18px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cat-chip:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.cat-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+.cat-chip.active .cat-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+.cat-emoji {
+  font-size: 22px;
+}
+.cat-count {
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+
+/* Grid */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 14px;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+.empty p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.empty button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .home-main {
+    padding: 12px;
+  }
+  .banner {
+    padding: 22px 20px;
+    min-height: 140px;
+  }
+  .banner-text h2 {
+    font-size: 20px;
+  }
+  .banner-text p {
+    font-size: 13px;
+  }
+  .banner-deco {
+    display: none;
+  }
+  .strip {
+    gap: 14px;
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+  .pgrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Loading skeletons */
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 0 16px;
+}
+.product-skeleton {
+  height: 260px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

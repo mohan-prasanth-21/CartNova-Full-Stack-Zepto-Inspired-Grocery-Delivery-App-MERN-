@@ -1,0 +1,247 @@
+.products-pg {
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+.products-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Filter Sidebar */
+.filter-panel {
+  width: 220px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 18px;
+  position: sticky;
+  top: 80px;
+}
+.filter-section {
+  margin-bottom: 22px;
+}
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+.filter-section h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.fcat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  transition: all 0.15s;
+  text-align: left;
+  color: var(--text);
+}
+.fcat-btn:hover {
+  background: var(--bg);
+}
+.fcat-btn.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+.fcat-cnt {
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+.fcat-btn.active .fcat-cnt {
+  background: var(--primary);
+  color: white;
+}
+
+.price-val {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 15px;
+  font-style: normal;
+}
+.range-slider {
+  width: 100%;
+  margin: 10px 0 4px;
+  accent-color: var(--primary);
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Main body */
+.products-body {
+  flex: 1;
+  min-width: 0;
+}
+.ptop-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ptop-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ptop-left h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+.results-pill {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+.ptop-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sort-sel {
+  padding: 9px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  background: white;
+  cursor: pointer;
+}
+.sort-sel:focus {
+  border-color: var(--primary);
+}
+
+.filter-mobile-btn {
+  display: none;
+  background: white;
+  border: 1.5px solid var(--border);
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mobile-filter-drawer {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.apply-filter-btn {
+  width: 100%;
+  margin-top: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+.empty-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+.empty-state h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.empty-state p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.empty-state button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 11px 26px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .filter-panel {
+    display: none;
+  }
+  .filter-mobile-btn {
+    display: block;
+  }
+  .mobile-filter-drawer .filter-panel {
+    display: block;
+    width: 100%;
+    position: static;
+    border: none;
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .products-wrap {
+    padding: 14px;
+  }
+  .pgrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+.product-skeleton {
+  height: 260px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
