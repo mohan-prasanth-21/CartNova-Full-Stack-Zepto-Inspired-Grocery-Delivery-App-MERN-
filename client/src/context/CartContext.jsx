@@ -14,22 +14,21 @@ export function CartProvider({ children }) {
   }, [items])
 
   const addItem = (product) => {
+    const pid = String(product._id || product.id)
     setItems(prev => {
-      const exists = prev.find(i => i._id === product._id || i.id === product.id)
+      const exists = prev.find(i => String(i._id || i.id) === pid)
       if (exists) return prev.map(i =>
-        (i._id === product._id || i.id === product.id) ? { ...i, qty: i.qty + 1 } : i
+        String(i._id || i.id) === pid ? { ...i, qty: i.qty + 1 } : i
       )
       return [...prev, { ...product, qty: 1 }]
     })
   }
-
-  const removeItem = (id) => setItems(prev => prev.filter(i => (i._id || i.id) !== id))
+  const removeItem = (id) => setItems(prev => prev.filter(i => String(i._id || i.id) !== String(id)))
 
   const updateQty = (id, qty) => {
-    if (qty < 1) return removeItem(id)
-    setItems(prev => prev.map(i => (i._id || i.id) === id ? { ...i, qty } : i))
-  }
-
+      if (qty < 1) return removeItem(id)
+      setItems(prev => prev.map(i => String(i._id || i.id) === String(id) ? { ...i, qty } : i))
+    }
   const clearCart = () => {
     setItems([])
     localStorage.removeItem(CART_KEY)
