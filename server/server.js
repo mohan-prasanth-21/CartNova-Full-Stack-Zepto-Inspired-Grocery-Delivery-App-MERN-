@@ -1,13 +1,12 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import connectDB from './config/db.js'
+import mongoose from 'mongoose'
 import authRoutes from './routes/authRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 
 dotenv.config()
-connectDB()
 
 const app = express()
 
@@ -16,6 +15,14 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
+
+// Connect per request
+app.use(async (req, res, next) => {
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(process.env.MONGO_URI)
+  }
+  next()
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
