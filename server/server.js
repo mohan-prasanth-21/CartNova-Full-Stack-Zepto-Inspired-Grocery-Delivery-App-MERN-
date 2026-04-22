@@ -7,7 +7,6 @@ import productRoutes from './routes/productRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 
 dotenv.config()
-connectDB()
 
 const app = express()
 
@@ -16,6 +15,12 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
+
+// Connect DB on every request (fixes Vercel cold start)
+app.use(async (req, res, next) => {
+  await connectDB()
+  next()
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
