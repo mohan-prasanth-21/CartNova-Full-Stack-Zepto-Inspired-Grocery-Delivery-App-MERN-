@@ -15,17 +15,18 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
-
-// Connect DB on every request (fixes Vercel cold start)
 app.use(async (req, res, next) => {
-  await connectDB()
-  next()
+  try {
+    await connectDB()
+    next()
+  } catch (e) {
+    res.status(500).json({ message: "DB connection failed" })
+  }
 })
 
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/orders', orderRoutes)
-
 app.get('/', (req, res) => res.send('CartNova API running 🚀'))
 
 export default app
