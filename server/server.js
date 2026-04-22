@@ -16,12 +16,15 @@ app.use(cors({
 }))
 app.use(express.json())
 
-// Connect per request
 app.use(async (req, res, next) => {
-  if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.MONGO_URI)
+  try {
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(process.env.MONGO_URI)
+    }
+    next()
+  } catch (err) {
+    res.status(500).json({ message: 'DB connection failed: ' + err.message })
   }
-  next()
 })
 
 app.use('/api/auth', authRoutes)
