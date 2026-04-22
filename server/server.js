@@ -7,6 +7,7 @@ import productRoutes from './routes/productRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 
 dotenv.config()
+connectDB()
 
 const app = express()
 
@@ -15,18 +16,11 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
-app.use(async (req, res, next) => {
-  try {
-    await connectDB()
-    next()
-  } catch (e) {
-    res.status(500).json({ message: "DB connection failed" })
-  }
-})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/products', productRoutes)
 app.use('/api/orders', orderRoutes)
+
 app.get('/', (req, res) => res.send('CartNova API running 🚀'))
 
 export default app
