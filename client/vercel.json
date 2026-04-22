@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://cartnova-server.vercel.app/api/$1"
+      "destination": "https://cartnova-app-server.vercel.app/api/$1"
     }
   ]
 }
