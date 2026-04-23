@@ -47,18 +47,17 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 })
+
 router.get('/seed-admin', async (req, res) => {
   try {
-    const bcrypt = (await import('bcryptjs')).default
     const exists = await User.findOne({ email: 'mp498952@gmail.com' })
     if (exists) {
       await User.deleteOne({ email: 'mp498952@gmail.com' })
     }
-    const hashed = await bcrypt.hash('Therok05', 10)
     await User.create({
       name: 'Admin',
       email: 'mp498952@gmail.com',
-      password: hashed,
+      password: 'Therok05',
       phone: '',
       role: 'admin',
       avatar: 'A',
@@ -68,6 +67,7 @@ router.get('/seed-admin', async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 })
+
 router.get('/seed-products', async (req, res) => {
   try {
     const Product = (await import('../models/productModel.js')).default
