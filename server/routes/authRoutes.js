@@ -48,4 +48,20 @@ router.post('/login', async (req, res) => {
   }
 })
 
+router.get('/seed-products', async (req, res) => {
+  try {
+    const Product = (await import('../models/productModel.js')).default
+    await Product.deleteMany()
+    await Product.insertMany([
+      { name: 'Apple', price: 40, category: 'Fruits', image: 'https://placehold.co/200', stock: 100, description: 'Fresh apples' },
+      { name: 'Banana', price: 20, category: 'Fruits', image: 'https://placehold.co/200', stock: 150, description: 'Fresh bananas' },
+      { name: 'Milk', price: 60, category: 'Dairy', image: 'https://placehold.co/200', stock: 80, description: 'Fresh milk 1L' },
+      { name: 'Bread', price: 35, category: 'Bakery', image: 'https://placehold.co/200', stock: 60, description: 'Fresh bread' },
+      { name: 'Chips', price: 30, category: 'Snacks', image: 'https://placehold.co/200', stock: 200, description: 'Potato chips' },
+    ])
+    res.json({ message: 'Products seeded successfully!' })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 export default router
