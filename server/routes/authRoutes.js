@@ -53,11 +53,14 @@ router.get('/seed-products', async (req, res) => {
     const Product = (await import('../models/productModel.js')).default
     await Product.deleteMany()
     await Product.insertMany([
-      { name: 'Apple', price: 40, category: 'Fruits', image: 'https://placehold.co/200', stock: 100, description: 'Fresh apples' },
-      { name: 'Banana', price: 20, category: 'Fruits', image: 'https://placehold.co/200', stock: 150, description: 'Fresh bananas' },
-      { name: 'Milk', price: 60, category: 'Dairy', image: 'https://placehold.co/200', stock: 80, description: 'Fresh milk 1L' },
-      { name: 'Bread', price: 35, category: 'Bakery', image: 'https://placehold.co/200', stock: 60, description: 'Fresh bread' },
-      { name: 'Chips', price: 30, category: 'Snacks', image: 'https://placehold.co/200', stock: 200, description: 'Potato chips' },
+      { name: 'Apple', price: 40, mrp: 50, category: 'Fruits', image: 'https://placehold.co/200', weight: '1kg', discount: 20, badge: 'Fresh' },
+      { name: 'Banana', price: 20, mrp: 25, category: 'Fruits', image: 'https://placehold.co/200', weight: '500g', discount: 10 },
+      { name: 'Broccoli', price: 35, mrp: 40, category: 'Vegetables', image: 'https://placehold.co/200', weight: '500g', discount: 5 },
+      { name: 'Milk', price: 60, mrp: 65, category: 'Dairy', image: 'https://placehold.co/200', weight: '1L', badge: 'Best Seller' },
+      { name: 'Bread', price: 35, mrp: 40, category: 'Bakery', image: 'https://placehold.co/200', weight: '400g' },
+      { name: 'Chips', price: 30, mrp: 35, category: 'Snacks', image: 'https://placehold.co/200', weight: '200g', badge: 'Popular' },
+      { name: 'Coke', price: 45, mrp: 50, category: 'Beverages', image: 'https://placehold.co/200', weight: '750ml' },
+      { name: 'Ice Cream', price: 80, mrp: 90, category: 'Frozen', image: 'https://placehold.co/200', weight: '500ml', badge: 'New' },
     ])
     res.json({ message: 'Products seeded successfully!' })
   } catch (err) {
