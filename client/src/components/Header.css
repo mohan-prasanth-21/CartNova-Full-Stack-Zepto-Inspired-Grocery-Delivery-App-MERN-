@@ -6,6 +6,7 @@
   z-index: 200;
   box-shadow: var(--shadow);
 }
+
 .hdr-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -23,6 +24,7 @@
   cursor: pointer;
   flex-shrink: 0;
 }
+
 .hdr-logo {
   width: 34px;
   height: 34px;
@@ -35,6 +37,7 @@
   font-weight: 900;
   font-size: 18px;
 }
+
 .hdr-brand span {
   font-size: 22px;
   font-weight: 900;
@@ -52,15 +55,18 @@
   border-radius: 8px;
   border: 1px solid var(--border);
 }
+
 .hdr-loc span {
   font-size: 16px;
 }
+
 .loc-top {
   font-size: 9px;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
 .loc-bot {
   font-size: 13px;
   font-weight: 600;
@@ -78,24 +84,29 @@
   transition: all 0.2s;
   max-width: 500px;
 }
+
 .hdr-search:focus-within {
   border-color: var(--primary);
   background: white;
   box-shadow: 0 0 0 3px rgba(26, 158, 92, 0.1);
 }
+
 .hdr-search input {
   flex: 1;
   border: none;
   background: transparent;
   outline: none;
   font-size: 14px;
+  min-width: 0;
 }
+
 .clear-search {
   background: none;
   border: none;
   color: var(--text-muted);
   font-size: 14px;
   padding: 0 2px;
+  flex-shrink: 0;
 }
 
 .hdr-actions {
@@ -104,6 +115,7 @@
   gap: 8px;
   flex-shrink: 0;
 }
+
 .admin-pill {
   background: #fef3c7;
   color: #92400e;
@@ -112,7 +124,9 @@
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
+  white-space: nowrap;
 }
+
 .hdr-orders {
   background: none;
   border: 1px solid var(--border);
@@ -121,10 +135,13 @@
   font-size: 13px;
   font-weight: 500;
   transition: background 0.2s;
+  white-space: nowrap;
 }
+
 .hdr-orders:hover {
   background: var(--bg);
 }
+
 .hdr-cart {
   background: var(--primary);
   color: white;
@@ -135,10 +152,13 @@
   font-weight: 600;
   position: relative;
   transition: background 0.2s;
+  white-space: nowrap;
 }
+
 .hdr-cart:hover {
   background: var(--primary-dark);
 }
+
 .cart-badge {
   position: absolute;
   top: -7px;
@@ -160,6 +180,7 @@
   position: relative;
   cursor: pointer;
 }
+
 .user-av {
   width: 36px;
   height: 36px;
@@ -172,7 +193,9 @@
   font-weight: 700;
   font-size: 15px;
   border: 2px solid var(--primary);
+  flex-shrink: 0;
 }
+
 .user-dropdown {
   position: absolute;
   right: 0;
@@ -183,19 +206,25 @@
   padding: 8px;
   min-width: 180px;
   box-shadow: var(--shadow-lg);
+  z-index: 300;
 }
+
 .ud-info {
   padding: 8px;
 }
+
 .ud-name {
   font-size: 14px;
   font-weight: 600;
 }
+
 .ud-email {
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
+  word-break: break-all;
 }
+
 .ud-badge {
   background: #fef3c7;
   color: #92400e;
@@ -206,11 +235,13 @@
   display: inline-block;
   margin-top: 4px;
 }
+
 .user-dropdown hr {
   border: none;
   border-top: 1px solid var(--border);
   margin: 4px 0;
 }
+
 .user-dropdown button {
   width: 100%;
   background: none;
@@ -223,14 +254,22 @@
   transition: background 0.15s;
   display: block;
 }
+
 .user-dropdown button:hover {
   background: var(--bg);
 }
+
 .logout-btn {
   color: var(--red) !important;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 374px) {
+  .hdr-inner {
+    padding: 0 10px;
+    gap: 8px;
+    height: 56px;
+  }
   .hdr-loc,
   .hdr-orders,
   .admin-pill {
@@ -238,5 +277,90 @@
   }
   .hdr-brand span {
     display: none;
+  }
+  .hdr-logo {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  .hdr-search {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .hdr-cart {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .user-av {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+}
+
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .hdr-inner {
+    padding: 0 14px;
+    gap: 10px;
+    height: 60px;
+  }
+  .hdr-loc,
+  .hdr-orders,
+  .admin-pill {
+    display: none;
+  }
+  .hdr-brand span {
+    display: none;
+  }
+}
+
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .hdr-inner {
+    height: 52px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hdr-inner {
+    padding: 0 16px;
+    gap: 12px;
+    height: 64px;
+  }
+  .hdr-loc {
+    display: none;
+  }
+  .admin-pill {
+    display: none;
+  }
+  .hdr-brand span {
+    font-size: 18px;
+  }
+  .hdr-search {
+    max-width: 340px;
+  }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hdr-inner {
+    padding: 0 18px;
+    gap: 14px;
+  }
+  .hdr-search {
+    max-width: 420px;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .hdr-inner {
+    padding: 0 24px;
+    gap: 16px;
+  }
+  .hdr-search {
+    max-width: 500px;
   }
 }

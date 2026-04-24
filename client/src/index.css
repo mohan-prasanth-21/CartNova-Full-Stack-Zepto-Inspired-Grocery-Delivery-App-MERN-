@@ -29,10 +29,7 @@
 }
 
 body {
-  font-family:
-    "Inter",
-    -apple-system,
-    sans-serif;
+  font-family: "Inter", -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
@@ -53,6 +50,7 @@ a {
 }
 img {
   display: block;
+  max-width: 100%;
 }
 
 .sr-only {
@@ -62,3 +60,4 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
 }
+
