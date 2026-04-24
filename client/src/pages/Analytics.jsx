@@ -106,6 +106,7 @@ const catSegments = [
 ]
 
 export default function Analytics() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout } = useAuth()
   const navigate = useNavigate()
   const [range, setRange]     = useState('week')
@@ -132,7 +133,9 @@ export default function Analytics() {
 
   return (
     <div className="analytics-pg">
-      <aside className="admin-sidebar">
+      <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
+        <button className="close-btn" onClick={() => setSidebarOpen(false)}>✕</button>
+
         <div className="admin-brand">
           <div className="ab-logo">C</div>
           <div>
@@ -169,7 +172,14 @@ export default function Analytics() {
       </aside>
 
       <main className="admin-main">
+
+        {sidebarOpen && (
+          <div className="overlay" onClick={() => setSidebarOpen(false)}></div>
+        )}
+
         <div className="admin-topbar">
+          <button className="menu-btn" onClick={() => setSidebarOpen(true)}>☰</button>
+
           <div>
             <h1>Analytics Dashboard</h1>
             <p className="at-sub">Welcome back, {user?.name} 👋 Here's what's happening today.</p>
