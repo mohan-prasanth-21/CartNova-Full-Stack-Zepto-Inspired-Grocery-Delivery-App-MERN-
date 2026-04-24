@@ -3,6 +3,10 @@
     {
       "source": "/api/(.*)",
       "destination": "https://cartnova-app-server.vercel.app/api/$1"
+    },
+    {
+      "source": "/((?!api).*)",
+      "destination": "/index.html"
     }
   ]
 }
