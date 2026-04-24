@@ -6,7 +6,7 @@
 
 /* Sidebar */
 .admin-sidebar {
-  width: 220px;
+  width: 100%;
   background: #0f172a;
   color: white;
   display: flex;
