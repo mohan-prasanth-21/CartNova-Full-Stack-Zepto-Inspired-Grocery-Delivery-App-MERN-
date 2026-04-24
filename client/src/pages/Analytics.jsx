@@ -106,7 +106,6 @@ const catSegments = [
 ]
 
 export default function Analytics() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, logout } = useAuth()
   const navigate = useNavigate()
   const [range, setRange]     = useState('week')
@@ -130,9 +129,12 @@ export default function Analytics() {
     { label: 'Avg Delivery',    value: '8.4 mins',delta: '-12%', icon: '⚡', color: '#ef4444', bg: '#fef2f2' },
     { label: 'Customer Rating', value: '4.7 ★',  delta: '+0.2', icon: '⭐', color: '#f59e0b', bg: '#fffbeb' },
   ]
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="analytics-pg">
+      {sidebarOpen && (
+        <div className="overlay" onClick={() => setSidebarOpen(false)}></div>
+      )}
       <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
         <button className="close-btn" onClick={() => setSidebarOpen(false)}>✕</button>
 
@@ -172,10 +174,6 @@ export default function Analytics() {
       </aside>
 
       <main className="admin-main">
-
-        {sidebarOpen && (
-          <div className="overlay" onClick={() => setSidebarOpen(false)}></div>
-        )}
 
         <div className="admin-topbar">
           <button className="menu-btn" onClick={() => setSidebarOpen(true)}>☰</button>
