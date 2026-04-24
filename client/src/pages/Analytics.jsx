@@ -141,8 +141,20 @@ export default function Analytics() {
           </div>
         </div>
         <nav className="admin-nav">
-          {[['📊','Analytics',true],['📦','Orders',false],['🛍️','Products',false],['👥','Customers',false],['⚙️','Settings',false]].map(([icon,label,active]) => (
-            <button key={label} className={`anav-btn ${active ? 'active' : ''}`}>{icon} {label}</button>
+          {[
+            ['📊', 'Analytics', '/admin'],
+            ['📦', 'Orders', '/admin/orders'],
+            ['🛍️', 'Products', '/admin/products'],
+            ['👥', 'Customers', '/admin/customers'],
+            ['⚙️', 'Settings', '/admin/settings'],
+          ].map(([icon, label, path]) => (
+            <button
+              key={label}
+              className={`anav-btn ${window.location.pathname === path ? 'active' : ''}`}
+              onClick={() => navigate(path)}
+            >
+              {icon} {label}
+            </button>
           ))}
         </nav>
         <div className="admin-user">

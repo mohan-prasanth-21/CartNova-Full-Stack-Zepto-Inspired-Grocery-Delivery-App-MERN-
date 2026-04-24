@@ -10,6 +10,11 @@ import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
 import Analytics from './pages/Analytics'
+import AdminProducts from './pages/AdminProducts'
+import AdminOrders from './pages/AdminOrders'
+
+
+
 
 function Guard({ children, adminOnly }) {
   const { user } = useAuth()
@@ -31,6 +36,8 @@ function AppRoutes() {
       <Route path="/orders"   element={<Guard><Orders /></Guard>} />
       <Route path="/admin"    element={<Guard adminOnly><Analytics /></Guard>} />
       <Route path="*"         element={<Navigate to="/" replace />} />
+      <Route path="/admin/products" element={<Guard adminOnly><AdminProducts /></Guard>} />
+      <Route path="/admin/orders"   element={<Guard adminOnly><AdminOrders /></Guard>} />
     </Routes>
   )
 }
