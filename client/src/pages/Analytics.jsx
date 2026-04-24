@@ -182,7 +182,33 @@ export default function Analytics() {
                 </button>
               ))}
             </div>
-            <button className="export-btn">⬇️ Export</button>
+             <button className="export-btn" onClick={() => {
+                const rows = [
+                  ['Metric', 'Value'],
+                  ['Total Revenue', `₹${totalRevenue}`],
+                  ['Total Orders', orders.length],
+                  ['Avg Order Value', orders.length ? `₹${Math.round(totalRevenue/orders.length)}` : '₹0'],
+                  ['Products', products.length],
+                  [],
+                  ['Order ID', 'Items', 'City', 'Total', 'Status', 'Date'],
+                  ...orders.map(o => [
+                    `#${o._id?.slice(-8).toUpperCase()}`,
+                    o.items?.length,
+                    o.address?.city || '—',
+                    `₹${o.total}`,
+                    o.status,
+                    new Date(o.createdAt).toLocaleDateString('en-IN')
+                  ])
+                ]
+                const csv = rows.map(r => r.join(',')).join('\n')
+                const blob = new Blob([csv], { type: 'text/csv' })
+                const url = URL.createObjectURL(blob)
+                const a = document.createElement('a')
+                a.href = url
+                a.download = `cartnova-report-${new Date().toISOString().slice(0,10)}.csv`
+                a.click()
+                URL.revokeObjectURL(url)
+              }}>⬇️ Export</button>
           </div>
         </div>
 
