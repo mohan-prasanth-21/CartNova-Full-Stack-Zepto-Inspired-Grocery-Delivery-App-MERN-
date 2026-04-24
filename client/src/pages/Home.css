@@ -378,6 +378,7 @@
   }
   .home-main {
     padding: 10px 14px;
+    max-width: 100%;
   }
   .banner {
     min-height: 110px;
