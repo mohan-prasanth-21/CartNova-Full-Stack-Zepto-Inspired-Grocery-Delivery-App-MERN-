@@ -1,6 +1,7 @@
 import express from 'express'
 import User from '../models/userModel.js'
 import generateToken from '../utils/generateToken.js'
+import { protect, adminOnly } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
@@ -48,4 +49,24 @@ router.post('/login', async (req, res) => {
   }
 })
 
+
+// GET all users - admin only
+router.get('/users', protect, adminOnly, async (req, res) => {
+  try {
+    const users = await User.find().select('-password').sort({ createdAt: -1 })
+    res.json(users)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+// DELETE user - admin only
+router.delete('/users/:id', protect, adminOnly, async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.json({ message: 'User deleted' })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
 export default router

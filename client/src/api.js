@@ -16,7 +16,13 @@ export const api = {
 
   register: (name, email, password, phone) =>
     fetch(`${BASE}/auth/register`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, password, phone }) }).then(r => r.json()),
+  
+  getUsers: () =>
+    fetch(`${BASE}/auth/users`, { headers: authHeader() }).then(r => r.json()),
 
+  deleteUser: (id) =>
+    fetch(`${BASE}/auth/users/${id}`, { method: 'DELETE', headers: authHeader() }).then(r => r.json()),
+  
   //  Products 
   getProducts: (category) => {
     const qs = category && category !== 'all' ? `?category=${category}` : ''
