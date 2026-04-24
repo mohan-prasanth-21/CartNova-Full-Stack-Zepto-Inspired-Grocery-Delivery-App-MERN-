@@ -37,7 +37,7 @@ export default function Cart() {
               </div>
 
               {items.map(item => (
-                <div className="cart-item" key={item.id}>
+                <div className="cart-item" key={item._id || item.id}>
                   <img src={item.image} alt={item.name} className="ci-img"
                     onError={e => { e.target.src = `https://placehold.co/80x80/e8f8f0/1a9e5c?text=${encodeURIComponent(item.name[0])}` }} />
                   <div className="ci-details">
@@ -51,12 +51,12 @@ export default function Cart() {
                   </div>
                   <div className="ci-actions">
                     <div className="qty-ctrl">
-                      <button onClick={() => updateQty(item.id, item.qty - 1)}>−</button>
+                      <button onClick={() => updateQty(String(item._id || item.id), item.qty - 1)}>−</button>
                       <span>{item.qty}</span>
-                      <button onClick={() => updateQty(item.id, item.qty + 1)}>+</button>
+                      <button onClick={() => updateQty(String(item._id || item.id), item.qty + 1)}>+</button>
                     </div>
                     <p className="ci-subtotal">₹{item.price * item.qty}</p>
-                    <button className="ci-remove" onClick={() => removeItem(item.id)} title="Remove">🗑</button>
+                    <button className="ci-remove" onClick={() => removeItem(String(item._id || item.id))} title="Remove">🗑</button>
                   </div>
                 </div>
               ))}

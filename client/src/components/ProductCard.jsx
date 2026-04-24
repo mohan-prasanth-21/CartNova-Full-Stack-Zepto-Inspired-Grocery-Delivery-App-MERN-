@@ -11,8 +11,8 @@
 
   export default function ProductCard({ product }) {
     const { items, addItem, updateQty } = useCart()
-    const pid = product._id || product.id
-    const cartItem = items.find(i => (i._id || i.id) === pid)
+    const pid = String(product._id || product.id)
+    const cartItem = items.find(i => String(i._id || i.id) === pid)
     const [imgError, setImgError] = useState(false)
     const badgeStyle = BADGE_COLORS[product.badge] || {}
 
