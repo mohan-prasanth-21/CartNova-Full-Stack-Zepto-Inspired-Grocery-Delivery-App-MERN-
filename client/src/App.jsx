@@ -12,6 +12,8 @@ import Orders from './pages/Orders'
 import Analytics from './pages/Analytics'
 import AdminProducts from './pages/AdminProducts'
 import AdminOrders from './pages/AdminOrders'
+import AdminCustomers from './pages/AdminCustomers'
+import AdminSettings from './pages/AdminSettings'
 
 
 
@@ -38,6 +40,8 @@ function AppRoutes() {
       <Route path="*"         element={<Navigate to="/" replace />} />
       <Route path="/admin/products" element={<Guard adminOnly><AdminProducts /></Guard>} />
       <Route path="/admin/orders"   element={<Guard adminOnly><AdminOrders /></Guard>} />
+      <Route path="/admin/customers" element={<Guard adminOnly><AdminCustomers /></Guard>} />
+      <Route path="/admin/settings"  element={<Guard adminOnly><AdminSettings /></Guard>} />
     </Routes>
   )
 }
