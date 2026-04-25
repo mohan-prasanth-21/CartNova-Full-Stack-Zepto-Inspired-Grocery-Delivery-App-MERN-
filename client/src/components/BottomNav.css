@@ -7,9 +7,10 @@
   background: white;
   border-top: 1px solid var(--border);
   z-index: 100;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  /* safe area for iPhone notch */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-
 .bnav-item {
   flex: 1;
   display: flex;
@@ -23,18 +24,15 @@
   font-size: 10px;
   font-weight: 500;
   transition: color 0.2s;
-  cursor: pointer;
+  min-width: 0;
 }
-
 .bnav-item.active {
   color: var(--primary);
 }
-
 .bnav-icon-wrap {
   font-size: 20px;
   position: relative;
 }
-
 .bnav-dot {
   position: absolute;
   top: -4px;
@@ -51,34 +49,28 @@
   justify-content: center;
 }
 
-
-@media (max-width: 374px) {
+/* Show on mobile and tablet portrait */
+@media (max-width: 768px) {
   .bnav {
     display: flex;
   }
-  .bnav-item {
-    font-size: 9px;
-    padding: 6px 0 8px;
-  }
-  .bnav-icon-wrap {
-    font-size: 18px;
-  }
-}
-
-
-@media (min-width: 375px) and (max-width: 767px) {
-  .bnav {
-    display: flex;
+  /* Pages that have bottom nav need bottom padding */
+  .home,
+  .cart-pg,
+  .orders-pg,
+  .products-pg,
+  .checkout-pg {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px));
   }
 }
 
+/* Landscape phone: slimmer nav */
 @media (max-width: 767px) and (orientation: landscape) {
   .bnav {
-    display: flex;
-    height: 48px;
+    height: 46px;
   }
   .bnav-item {
-    padding: 5px 0 7px;
+    padding: 4px 0 6px;
     font-size: 9px;
   }
   .bnav-icon-wrap {
@@ -86,9 +78,13 @@
   }
 }
 
-
-@media (min-width: 768px) {
-  .bnav {
-    display: none !important;
+/* Small phone adjustments */
+@media (max-width: 374px) {
+  .bnav-item {
+    font-size: 9px;
+    padding: 6px 0 8px;
+  }
+  .bnav-icon-wrap {
+    font-size: 18px;
   }
 }

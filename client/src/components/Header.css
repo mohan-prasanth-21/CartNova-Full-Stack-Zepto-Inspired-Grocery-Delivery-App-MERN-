@@ -5,8 +5,8 @@
   top: 0;
   z-index: 200;
   box-shadow: var(--shadow);
+  width: 100%;
 }
-
 .hdr-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -24,7 +24,6 @@
   cursor: pointer;
   flex-shrink: 0;
 }
-
 .hdr-logo {
   width: 34px;
   height: 34px;
@@ -37,7 +36,6 @@
   font-weight: 900;
   font-size: 18px;
 }
-
 .hdr-brand span {
   font-size: 22px;
   font-weight: 900;
@@ -54,22 +52,24 @@
   padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid var(--border);
+  min-width: 0;
 }
-
 .hdr-loc span {
   font-size: 16px;
 }
-
 .loc-top {
   font-size: 9px;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .loc-bot {
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
 }
 
 .hdr-search {
@@ -82,15 +82,14 @@
   padding: 10px 14px;
   border: 1.5px solid transparent;
   transition: all 0.2s;
+  min-width: 0;
   max-width: 500px;
 }
-
 .hdr-search:focus-within {
   border-color: var(--primary);
   background: white;
-  box-shadow: 0 0 0 3px rgba(26, 158, 92, 0.1);
+  box-shadow: 0 0 0 3px rgba(26,158,92,0.1);
 }
-
 .hdr-search input {
   flex: 1;
   border: none;
@@ -98,8 +97,8 @@
   outline: none;
   font-size: 14px;
   min-width: 0;
+  width: 100%;
 }
-
 .clear-search {
   background: none;
   border: none;
@@ -115,7 +114,6 @@
   gap: 8px;
   flex-shrink: 0;
 }
-
 .admin-pill {
   background: #fef3c7;
   color: #92400e;
@@ -126,7 +124,6 @@
   font-weight: 600;
   white-space: nowrap;
 }
-
 .hdr-orders {
   background: none;
   border: 1px solid var(--border);
@@ -137,11 +134,9 @@
   transition: background 0.2s;
   white-space: nowrap;
 }
-
 .hdr-orders:hover {
   background: var(--bg);
 }
-
 .hdr-cart {
   background: var(--primary);
   color: white;
@@ -154,11 +149,9 @@
   transition: background 0.2s;
   white-space: nowrap;
 }
-
 .hdr-cart:hover {
   background: var(--primary-dark);
 }
-
 .cart-badge {
   position: absolute;
   top: -7px;
@@ -179,8 +172,8 @@
 .hdr-user {
   position: relative;
   cursor: pointer;
+  flex-shrink: 0;
 }
-
 .user-av {
   width: 36px;
   height: 36px;
@@ -193,9 +186,7 @@
   font-weight: 700;
   font-size: 15px;
   border: 2px solid var(--primary);
-  flex-shrink: 0;
 }
-
 .user-dropdown {
   position: absolute;
   right: 0;
@@ -208,23 +199,19 @@
   box-shadow: var(--shadow-lg);
   z-index: 300;
 }
-
 .ud-info {
   padding: 8px;
 }
-
 .ud-name {
   font-size: 14px;
   font-weight: 600;
 }
-
 .ud-email {
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
   word-break: break-all;
 }
-
 .ud-badge {
   background: #fef3c7;
   color: #92400e;
@@ -235,13 +222,11 @@
   display: inline-block;
   margin-top: 4px;
 }
-
 .user-dropdown hr {
   border: none;
   border-top: 1px solid var(--border);
   margin: 4px 0;
 }
-
 .user-dropdown button {
   width: 100%;
   background: none;
@@ -254,21 +239,19 @@
   transition: background 0.15s;
   display: block;
 }
-
 .user-dropdown button:hover {
   background: var(--bg);
 }
-
 .logout-btn {
   color: var(--red) !important;
 }
 
-
-@media (max-width: 374px) {
+/* ── Tablet (768px and below) ── */
+@media (max-width: 768px) {
   .hdr-inner {
-    padding: 0 10px;
-    gap: 8px;
+    padding: 0 12px;
     height: 56px;
+    gap: 10px;
   }
   .hdr-loc,
   .hdr-orders,
@@ -281,11 +264,14 @@
   .hdr-logo {
     width: 30px;
     height: 30px;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 8px;
   }
   .hdr-search {
     padding: 8px 10px;
+    max-width: none;
+  }
+  .hdr-search input {
     font-size: 13px;
   }
   .hdr-cart {
@@ -293,74 +279,65 @@
     font-size: 13px;
   }
   .user-av {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     font-size: 13px;
   }
 }
 
-
-@media (min-width: 375px) and (max-width: 767px) {
+/* ── Small mobile (max 480px) ── */
+@media (max-width: 480px) {
   .hdr-inner {
-    padding: 0 14px;
-    gap: 10px;
-    height: 60px;
-  }
-  .hdr-loc,
-  .hdr-orders,
-  .admin-pill {
-    display: none;
-  }
-  .hdr-brand span {
-    display: none;
-  }
-}
-
-
-@media (max-width: 767px) and (orientation: landscape) {
-  .hdr-inner {
+    padding: 0 10px;
     height: 52px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hdr-inner {
-    padding: 0 16px;
-    gap: 12px;
-    height: 64px;
-  }
-  .hdr-loc {
-    display: none;
-  }
-  .admin-pill {
-    display: none;
-  }
-  .hdr-brand span {
-    font-size: 18px;
+    gap: 8px;
   }
   .hdr-search {
-    max-width: 340px;
+    padding: 7px 10px;
+  }
+  .hdr-search input {
+    font-size: 13px;
+  }
+  .hdr-cart {
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+  .cart-badge {
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    top: -5px;
+    right: -5px;
+  }
+  /* On very small phones, hide cart text, keep icon only */
+  .hdr-cart-text {
+    display: none;
+  }
+  .user-dropdown {
+    right: -8px;
+    min-width: 160px;
   }
 }
 
-
-@media (min-width: 1024px) and (max-width: 1279px) {
+/* ── Extra small (max 374px) ── */
+@media (max-width: 374px) {
   .hdr-inner {
-    padding: 0 18px;
-    gap: 14px;
+    padding: 0 8px;
+    gap: 6px;
   }
-  .hdr-search {
-    max-width: 420px;
+  .hdr-logo {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
   }
 }
 
-
+/* ── Large desktop ── */
 @media (min-width: 1280px) {
   .hdr-inner {
-    padding: 0 24px;
-    gap: 16px;
+    padding: 0 32px;
   }
   .hdr-search {
-    max-width: 500px;
+    max-width: 560px;
   }
 }
