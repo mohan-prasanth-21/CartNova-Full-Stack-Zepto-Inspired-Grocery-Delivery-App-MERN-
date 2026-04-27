@@ -70,23 +70,4 @@ router.delete('/users/:id', protect, adminOnly, async (req, res) => {
   }
 })
 
-router.get('/seed-admin', async (req, res) => {
-  try {
-    const exists = await User.findOne({ email: 'mp498952@gmail.com' })
-    if (exists) {
-      await User.deleteOne({ email: 'mp498952@gmail.com' })
-    }
-    await User.create({
-      name: 'Admin',
-      email: 'mp498952@gmail.com',
-      password: 'Therok05',
-      phone: '',
-      role: 'admin',
-      avatar: 'A',
-    })
-    res.json({ message: 'Admin created successfully!' })
-  } catch (err) {
-    res.status(500).json({ message: err.message })
-  }
-})
 export default router
